@@ -1,0 +1,45 @@
+---
+# tasks file for ansible-role-java-openjdk
+
+- name: Download the OpenJDK tarball
+  get_url:
+    url: "{{ java_openjdk_url }}"
+    dest: "{{ java_openjdk_install_folder }}"
+  register: download
+
+- name: set a variable with the full path of the downloaded .tar.gz file
+  set_fact:
+    tarball_path: "{{ download.dest }}"
+
+- name: Uncompress the tarball to {{ java_openjdk_install_folder }} . By default /opt
+  unarchive:
+    src: "{{ tarball_path }}"
+    dest: "{{ java_openjdk_install_folder }}"
+    remote_src: true
+
+- name: Find the folder where the JDK has been uncompressed
+  find:
+    paths: "{{ java_openjdk_install_folder }}"
+    patterns: 'jdk*'
+    file_type: directory
+  register: find_result
+
+# [files] is a list of dicts with the info of all the directories starting by jdk*
+# we fetch the path of last element in the list
+- name: set a variable with the path where the tarball has been uncompressed
+  set_fact:
+    jdk_path: "{{ find_result['files'][-1]['path'] }}"
+
+- name: Create a symlink /opt/java
+  file:
+    src: "{{ jdk_path }}"
+    dest: "{{ java_openjdk_install_folder }}/java"
+    state: link
+
+- name: Copy /etc/profile.d/java-openjdk.sh to define JAVA_HOME and PATH
+  template:
+    src: etc/profile.d/java-openjdk.sh
+    dest: /etc/profile.d/java-openjdk.sh
+    owner: root
+    group: root
+    mode: 0644
