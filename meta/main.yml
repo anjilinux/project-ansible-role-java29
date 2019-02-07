@@ -29,15 +29,15 @@ galaxy_info:
   #
 
   platforms:
-  - name: EL
-    versions:
-      - all
-  - name: Ubuntu
-    versions:
-      - all
-  - name: Debian
-    versions:
-      - all
+    - name: EL
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
 
   galaxy_tags:
     - java
