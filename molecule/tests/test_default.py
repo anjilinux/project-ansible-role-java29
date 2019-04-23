@@ -16,8 +16,7 @@ def test_etc_profile_d_java_sh(host):
 
 
 def test_opt_java(host):
-    f = host.file('/opt/java')
-    assert f.is_symlink
+    f = host.file('/opt/java/bin/java')
     assert f.exists
     assert f.user == 'root'
     assert f.group == 'root'
