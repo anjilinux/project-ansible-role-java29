@@ -2,7 +2,7 @@
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-pescobar.java_openjdk-blue.svg)](https://galaxy.ansible.com/pescobar/java_openjdk)
 
 ansible-role-java-openjdk
-=========
+==========
 
 Install java OpenJDK from the official tarball
 
