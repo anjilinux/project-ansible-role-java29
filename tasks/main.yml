@@ -45,3 +45,8 @@
     owner: root
     group: root
     mode: 0644
+
+- name: Use update-alternatives to define the default java
+  alternatives:
+    name: java
+    path: "{{ java_openjdk_install_folder }}/java/bin/java"
