@@ -49,4 +49,5 @@
 - name: Use update-alternatives to define the default java
   alternatives:
     name: java
+    link: /usr/bin/java
     path: "{{ java_openjdk_install_folder }}/java/bin/java"
