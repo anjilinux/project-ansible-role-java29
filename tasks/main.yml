@@ -11,7 +11,7 @@
   set_fact:
     tarball_path: "{{ download.dest }}"
 
-- name: Uncompress the tarball to {{ java_openjdk_install_folder }} . By default /opt
+- name: Uncompress the tarball to java_openjdk_install_folder . By default /opt
   unarchive:
     src: "{{ tarball_path }}"
     dest: "{{ java_openjdk_install_folder }}"
