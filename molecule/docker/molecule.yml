@@ -14,6 +14,14 @@ platforms:
     command: /usr/sbin/init
     # volumes:
     #   - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: fedora29-docker
+    image: geerlingguy/docker-fedora29-ansible
+  - name: ubuntu18.04-docker
+    image: geerlingguy/docker-ubuntu1804-ansible
+  - name: ubuntu16.04-docker
+    image: geerlingguy/docker-ubuntu1604-ansible
+  - name: debian9-docker
+    image: geerlingguy/docker-debian9-ansible
 provisioner:
   name: ansible
   options:
