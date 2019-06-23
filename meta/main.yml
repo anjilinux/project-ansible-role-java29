@@ -3,7 +3,7 @@ galaxy_info:
 
   role_name: java_openjdk
   author: Pablo Escobar Lopez
-  description: Install OpenJDK java
+  description: Install OpenJDK java from the official tarball
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
