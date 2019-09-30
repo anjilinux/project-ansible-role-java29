@@ -5,6 +5,7 @@
 # java_openjdk_url: "https://download.java.net/java/GA/jdk10/10.0.2/19aef61b38124481863b1413dce1855f/13/openjdk-10.0.2_linux-x64_bin.tar.gz"
 # java_openjdk_url: "https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz"
 java_openjdk_url: "https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_linux-x64_bin.tar.gz"
+# checksum is sha1. From docs "If you worry about portability, only the sha1 algorithm is available on all platforms and python versions"
 java_openjdk_checksum: 05951ea0e11e0d7ed21936b2e5cfb892463e16ee
 
 java_openjdk_install_folder: "/opt"
