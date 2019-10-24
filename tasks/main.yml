@@ -4,7 +4,8 @@
 - name: Download the OpenJDK tarball
   get_url:
     url: "{{ java_openjdk_url }}"
-    dest: "{{ java_openjdk_install_folder }}"
+    # dest must be full path (not folder) so checksum is checked
+    dest: "{{ java_openjdk_install_folder }}/{{ java_openjdk_url.split('/')[-1] }}"
     checksum: "sha1:{{ java_openjdk_checksum }}"
   register: download
 
