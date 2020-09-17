@@ -1,0 +1,47 @@
+---
+name: CI Tests
+
+on:
+  pull_request:
+    branches:
+     - main
+  push:
+    branches:
+      - main
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        distros:
+          - geerlingguy/docker-centos7-ansible:latest
+          - geerlingguy/docker-centos8-ansible:latest
+          # - geerlingguy/docker-ubuntu2004-ansible:latest
+          # - geerlingguy/docker-ubuntu1804-ansible:latest
+          # - geerlingguy/docker-ubuntu1604-ansible:latest
+          # - geerlingguy/docker-debian10-ansible:latest
+          # - geerlingguy/docker-debian9-ansible:latest
+          # - geerlingguy/docker-fedora31-ansible:latest
+          # - geerlingguy/docker-amazonlinux2-ansible:latest
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          pip install ansible molecule ansible-lint
+
+      - name: Lint
+        run: ansible lint
+
+      - name: Molecule test
+        run: molecule test
+        env:
+          MOLECULE_DISTRO: "${{ matrix.distros }}"
