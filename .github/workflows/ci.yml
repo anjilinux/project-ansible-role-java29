@@ -34,7 +34,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install ansible molecule ansible-lint
+          pip install ansible molecule ansible-lint yamllint docker
 
       - name: Lint
         run: molecule lint
